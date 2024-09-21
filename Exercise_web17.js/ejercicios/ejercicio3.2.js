@@ -3,10 +3,11 @@ console.log('ejercicio 3.2')
 
 const input = 10;
 // create your function here
-const yourFunction1= () => {
-    return input.toString().split('').join('-');//convierto a string, separo los carazteres con '' y uno con '-'
+const yourFunction1= (input) => {
+    const fisrt = input.toString().split('').join('-');//convierto a string, separo los carazteres con '' y uno con '-'
+    return fisrt
 }; // '1-0'
-console.log('input 1 finction',yourFunction1(input))
+console.log('input 1 function',yourFunction1(input))
 
 const secondInput = 1;
 const yourFunction2 = (input) => {
@@ -16,6 +17,6 @@ console.log(yourFunction2(secondInput))
 
 const thirdInput = 11234;
 const yourFunction3 = (input) => {
-    return thirdInput.toString().split('').join('-')
+    return input
 }; 
-console.log('thirdInput', yourFunction3(thirdInput))// '1-1-2-3-4'
+console.log('thirdInput', yourFunction1(thirdInput) )// '1-1-2-3-4'
