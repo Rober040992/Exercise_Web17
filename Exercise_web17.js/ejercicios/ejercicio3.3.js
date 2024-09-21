@@ -11,10 +11,8 @@ console.log(yourFunction(input1))
 
 const input2 = 'variable';
 const yourFunction2 = (input) =>{
-    return input2.length +' '+  input.split('').reverse().join('')
 }; // '8 elbairav'
-
-console.log(yourFunction2(input2))
+console.log(yourFunction(input2))
 
 const input3 = 'pointer';
-yourFunction(input3); // '7 retniop'
+console.log(yourFunction(input3)); // '7 retniop'
