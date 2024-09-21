@@ -28,10 +28,11 @@ const musicCatalog = () => {
    * @param {string} playlistName - The name of the new playlist.
    */
   const createPlaylist = (playlistName) => {
-    playlists = [...playlists, {
+    const newPlaylists = [...playlists, {
       name: playlistName,
       songs: [],
     }];
+    playlists = newPlaylists;
   };
 
   /**
@@ -60,10 +61,16 @@ const musicCatalog = () => {
    */
   const addSongToPlaylist = (playlistName, song) => {
     const playlist = playlists.find(thePlaylist => thePlaylist.name === playlistName)
-    if (playlist.name !== playlistName){
+    if (playlist === undefined){
       throw new Error('can not find that playlist')
     };
     playlist.songs = [...playlist.songs,song]
+    playlists = playlists.map((element) => {
+      if (element.name === playlist.name){
+        return playlist
+      };
+      return element
+    })
   };
 
   /**

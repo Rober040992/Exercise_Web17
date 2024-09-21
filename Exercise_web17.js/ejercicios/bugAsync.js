@@ -11,3 +11,6 @@ function obtenerUsuario(id, callback) {
 obtenerUsuario(1, (usuario) => {
     console.log(usuario); // Resultado: { id: 1, nombre: 'John Doe' }
 });
+
+
+//no puedo resolverlo
