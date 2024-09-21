@@ -9,14 +9,11 @@ const yourFunction = (input) => {
 }; // '6 gnirts'
 console.log(yourFunction(input1))
 
+
 const input2 = 'variable';
-const yourFunction2 = (input) =>{
-    return input
-}; // '8 elbairav'
+// '8 elbairav'
 console.log(yourFunction(input2))
 
+
 const input3 = 'pointer';
-const yourFunction3 = (input) => {
-    return input
-};
 console.log(yourFunction(input3)); // '7 retniop'
