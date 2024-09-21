@@ -60,17 +60,17 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist is not found.
    */
   const addSongToPlaylist = (playlistName, song) => {
-    const playlist = playlists.find(thePlaylist => thePlaylist.name === playlistName)
-    if (playlist === undefined){
+    const playlist = playlists.find(thePlaylist => thePlaylist.name === playlistName)//devuelve el primer elemento de la array que cumple la condicion
+    if (playlist === undefined){ //si no lo cumple el find lo devuelve como undefined, entonces throw error
       throw new Error('can not find that playlist')
     };
-    playlist.songs = [...playlist.songs,song]
-    playlists = playlists.map((element) => {
+    playlist.songs = [...playlist.songs,song]//Concatenas la nueva canción a la lista de canciones usando[...]
+    playlists = playlists.map((element) => { //vuelves a mapear playlists para actualizar la lista
       if (element.name === playlist.name){
         return playlist
       };
       return element
-    })
+    });
   };
 
   /**
@@ -79,7 +79,15 @@ const musicCatalog = () => {
    * @param {string} title - The title of the song to remove.
    * @throws {Error} If the playlist or song is not found.
    */
-  const removeSongFromPlaylist = (playlistName, title) => {};
+  const removeSongFromPlaylist = (playlistName, title) => {
+    const findList = playlists.find(fn => fn.name === playlistName)
+    if (findList === undefined){
+      throw new Error(`the list ${findList} is not found`)
+    }
+    playlists.filter(busca => {busca.name === playlistName})
+
+    
+  };
 
   /**
    * Marks a song as a favorite or removes the favorite status.
