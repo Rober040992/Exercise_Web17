@@ -1,1 +1,3 @@
-playlist sin acabar, lo subo por si tengo algun error anteror a la playlist
+need to do ; 
+method favorite
+method sortSongs
