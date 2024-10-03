@@ -64,7 +64,9 @@ const musicCatalog = () => {
     if (playlist === undefined){ //si no lo cumple el find lo devuelve como undefined, entonces throw error
       throw new Error('can not find that playlist')
     };
+    
     playlist.songs = [...playlist.songs,song]//Concatenas la nueva canción a la lista de canciones usando[...]
+
     playlists = playlists.map((element) => { //vuelves a mapear playlists para actualizar la lista
       if (element.name === playlist.name){
         return playlist
