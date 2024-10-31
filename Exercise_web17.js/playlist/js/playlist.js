@@ -47,11 +47,11 @@ const musicCatalog = () => {
    * Removes a playlist from the catalog.
    * @param {string} playlistName - The name of the playlist to remove.
    */
-    const removePlaylist = (playlistName) => {
-      playlists = playlists.filter(removePLay => {
-        return removePLay.name !== playlistName;
-      })
-    };
+  const removePlaylist = (playlistName) => {
+    playlists = playlists.filter(removePLay => {
+      return removePLay.name !== playlistName;
+    })
+  };
 
   /**
    * Adds a song to a specific playlist.
@@ -61,17 +61,19 @@ const musicCatalog = () => {
    */
   const addSongToPlaylist = (playlistName, song) => {
     const playlist = playlists.find(thePlaylist => thePlaylist.name === playlistName)//devuelve el primer elemento de la array que cumple la condicion
-    if (playlist === undefined){ //si no lo cumple el find lo devuelve como undefined, entonces throw error
+    if (playlist === undefined) { //si no lo cumple el find lo devuelve como undefined, entonces throw error
       throw new Error('can not find that playlist')
     };
-    
-    playlist.songs = [...playlist.songs,song]//Concatenas la nueva canción a la lista de canciones usando[...]
 
-    playlists = playlists.map((element) => { //vuelves a mapear playlists para actualizar la lista
-      if (element.name === playlist.name){
-        return playlist
-      };
-      return element
+    const updatedPlaylist = {
+      ...playlist,
+      songs: [...playlist.songs, song]
+    };
+    playlists = playlists.map(element => {
+      if (element.name === playlistName) {
+        return updatedPlaylist;
+      }
+      return element;
     });
   };
 
@@ -82,30 +84,30 @@ const musicCatalog = () => {
    * @throws {Error} If the playlist or song is not found.
    */
   const removeSongFromPlaylist = (playlistName, title) => {
-    const thePLaylist = playlists.find(playlist =>{
+    const thePLaylist = playlists.find(playlist => {
       return (playlist.name === playlistName); //busco el nombre que coincide con playlist
     });
 
-    let theSongToRemove = []; 
-    if(thePLaylist){ //si the playlist se encuentra:
+    let theSongToRemove = [];
+    if (thePLaylist) { //si the playlist se encuentra:
       theSongToRemove = thePLaylist.songs.find(song => song.title === title); // busca en songs la cancion que coincida con title y la añade a removeSong
     };
 
-    if (theSongToRemove){ //si encuentra la cancion:
+    if (theSongToRemove) { //si encuentra la cancion:
       thePLaylist.songs = thePLaylist.songs.filter(song => song.title !== title); //crea una lista de canciones sin la canion que tiene title 
     }
     else {
       throw new Error(`the song: \n ${title} in  the playlist: \n ${playlistName} \n are not found`);
+    };
+
   };
-  
-  };
-  
+
   /**
    * Marks a song as a favorite or removes the favorite status.
    * @param {string} playlistName - The name of the playlist containing the song.
    * @param {string} title - The title of the song to mark as a favorite.
    */
-  const favoriteSong = (playlistName, title) => {};
+  const favoriteSong = (playlistName, title) => { };
 
   /**
    * Sorts songs in a specific playlist by a given criterion (title, artist, or duration).
@@ -114,7 +116,7 @@ const musicCatalog = () => {
    * @returns {Song[]} The list of sorted songs.
    * @throws {Error} If the playlist is not found or the criterion is invalid.
    */
-  const sortSongs = (playlistName, criterion) => {};
+  const sortSongs = (playlistName, criterion) => { };
 
   return { createPlaylist, addSongToPlaylist, removeSongFromPlaylist, sortSongs, getAllPlaylists, removePlaylist, favoriteSong };
 };
